@@ -5,7 +5,8 @@ node() {
     gitRepositoryUrl = "https://github.com/dmariage/taiga.git"
     imageName = "damienma/taiga"
     
-    git gitRepositoryUrl
+    //git gitRepositoryUrl
+    checkout scm
     
     docker.withRegistry(registry_url, docker_creds_id) {
         
