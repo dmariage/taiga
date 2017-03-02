@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER "Andrey Arapov <andrey.arapov@nixaid.com>"
+MAINTAINER "Damien MARIAGE <damien.mariage@groupeonepoint.com>"
 EXPOSE 80
 
 # To avoid problems with Dialog and curses wizards
@@ -15,7 +15,7 @@ RUN apt-get update -qq \
         nginx \
     && rm -rf -- /var/lib/apt/lists/*
 
-RUN pip3 install circus gunicorn
+RUN pip3 install circus gunicorn taiga-contrib-ldap-auth taiga-contrib-slack
 
 # Create taiga user
 ENV USER taiga
