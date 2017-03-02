@@ -15,7 +15,7 @@ RUN apt-get update -qq \
         nginx \
     && rm -rf -- /var/lib/apt/lists/*
 
-RUN pip3 install circus gunicorn taiga-contrib-ldap-auth taiga-contrib-slack
+RUN pip3 install circus gunicorn taiga-contrib-ldap-auth
 
 # Create taiga user
 ENV USER taiga
