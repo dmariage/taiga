@@ -32,6 +32,23 @@ export EMAIL_HOST_PORT=${EMAIL_HOST_PORT:-587}
 export EMAIL_USE_TLS=${EMAIL_USE_TLS:-False}
 export EMAIL_BACKEND=${EMAIL_BACKEND:-django.core.mail.backends.smtp.EmailBackend}
 
+#INSTALLED_APPS += ["taiga_contrib_ldap_auth"]
+export LDAP_ENABLED=${LDAP_ENABLED:-0}
+export LDAP_SERVER=${LDAP_SERVER:-}
+export LDAP_PORT=${LDAP_SERVER:-389}
+export LDAP_BIND_DN=${LDAP_BIND_DN:-}
+export LDAP_BIND_PASSWORD=${LDAP_BIND_PASSWORD:-}
+export LDAP_SEARCH_BASE=${LDAP_SEARCH_BASE:-}
+export LDAP_SEARCH_PROPERTY=${LDAP_SEARCH_PROPERTY:-uid}
+export LDAP_SEARCH_SUFFIX=${LDAP_SEARCH_SUFFIX:-None}
+export LDAP_EMAIL_PROPERTY=${LDAP_EMAIL_PROPERTY:-mail}
+export LDAP_FULL_NAME_PROPERTY=${LDAP_FULL_NAME_PROPERTY:-cn}
+
+if[[ $LDAP_ENABLED eq 1 ]]; then
+    export INSTALLED_APPS='INSTALLED_APPS += ["taiga_contrib_ldap_auth"]'
+    export CONF_LOGIN_FORM_TYPE = ',"loginFormType": "ldap"'
+fi
+
 
 # Generate configs based on the template seeds
 envsubst < /tmp/taiga.tmpl > /etc/nginx/sites-enabled/taiga
