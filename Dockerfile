@@ -31,12 +31,9 @@ WORKDIR $DATA
 
 # Install taiga-back
 RUN git clone -b stable https://github.com/taigaio/taiga-back.git taiga-back \
-    && virtualenv -p python venvtaiga \
-    && . venvtaiga/bin/activate \
     && cd taiga-back \
     && /usr/local/bin/pip install -r requirements.txt \
-    && /usr/local/bin/pip install taiga-contrib-ldap-auth \
-    && deactivate
+    && /usr/local/bin/pip install taiga-contrib-ldap-auth
 
 # Install taiga-front (compiled)
 RUN git clone -b stable https://github.com/taigaio/taiga-front-dist.git taiga-front-dist
