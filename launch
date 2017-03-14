@@ -44,9 +44,9 @@ export LDAP_SEARCH_SUFFIX=${LDAP_SEARCH_SUFFIX:-None}
 export LDAP_EMAIL_PROPERTY=${LDAP_EMAIL_PROPERTY:-mail}
 export LDAP_FULL_NAME_PROPERTY=${LDAP_FULL_NAME_PROPERTY:-cn}
 
-if[[ $LDAP_ENABLED eq 1 ]]; then
+if [[ $LDAP_ENABLED -eq 1 ]]; then
     export INSTALLED_APPS='INSTALLED_APPS += ["taiga_contrib_ldap_auth"]'
-    export CONF_LOGIN_FORM_TYPE = ',"loginFormType": "ldap"'
+    export CONF_LOGIN_FORM_TYPE=',"loginFormType": "ldap"'
 fi
 
 
