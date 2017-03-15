@@ -11,7 +11,7 @@ RUN apt-get update -qq \
     && apt-get install -y -- build-essential binutils-doc autoconf flex \
         bison libjpeg-dev libfreetype6-dev zlib1g-dev libzmq3-dev \
         libgdbm-dev libncurses5-dev automake libtool libffi-dev curl git \
-        tmux gettext python3.4 python3.4-dev python3-pip libxml2-dev \
+        tmux gettext python3 python3-dev python3-pip libxml2-dev \
         libxslt-dev libpq-dev virtualenv \
         nginx \
     && rm -rf -- /var/lib/apt/lists/*
