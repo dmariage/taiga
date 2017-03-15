@@ -1,4 +1,5 @@
-FROM debian:jessie
+FROM ubuntu
+MAINTAINER "Nicolas DRENO <nicolas.dreno@engie.com>"
 MAINTAINER "Damien MARIAGE <damien.mariage@groupeonepoint.com>"
 EXPOSE 80
 
@@ -15,7 +16,7 @@ RUN apt-get update -qq \
         nginx \
     && rm -rf -- /var/lib/apt/lists/*
 
-RUN pip3 install circus gunicorn taiga-contrib-ldap-auth
+RUN pip3 install circus gunicorn 
 
 # Create taiga user
 ENV USER taiga
@@ -31,10 +32,11 @@ WORKDIR $DATA
 
 # Install taiga-back
 RUN git clone -b stable https://github.com/taigaio/taiga-back.git taiga-back \
-    && virtualenv -p /usr/bin/python3.4 venvtaiga \
+    && virtualenv -p /usr/bin/python3.5 venvtaiga \
     && . venvtaiga/bin/activate \
     && cd taiga-back \
     && pip3 install -r requirements.txt \
+    && pip3 install taiga-contrib-ldap-auth \
     && deactivate
 
 # Install taiga-front (compiled)
