@@ -19,7 +19,7 @@ node('swarm') {
         }
         
         stage('push-latest') {
-            taigaImage.push("latest")
+            taigaImage.push("ubuntu")
         }
         
     }
