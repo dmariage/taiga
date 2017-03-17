@@ -1,4 +1,4 @@
-node('swarm') {
+node('build') {
     registry_url = "https://index.docker.io/v1/" // Docker Hub
     docker_creds_id = "damien-dockerhub-crendentials" // name of the Jenkins Credentials ID
     build_tag = "testing" // default tag to push for to the registry
